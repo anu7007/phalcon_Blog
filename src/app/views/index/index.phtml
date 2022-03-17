@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<?php
+echo "<h1 class='text-dark text-center mt-4 bg-active'>...Welcome to our blog Page...</h1>";
+echo "<h4 class='text-muted mt-4 float-start'>If you are already a member,</h4><br>";
+echo $this->tag->linkTo(["login", "Login Here!", 'class' => 'btn btn-info mb-2']);
+echo PHP_EOL;
+echo "<h4 class='text-muted mt-4 float-'>If you aren't a member, </h4><br>";
+echo $this->tag->linkTo(["signup", "Register Here!", 'class' => 'btn btn-success mb-2']);  
+// if ($users->count() > 0) {
+    ?>
+    <!-- <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr> 
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td class="table-primary align-items-center" style="text-align: right" colspan="3">Total Users: <?php echo $users->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+       
+        // foreach ($users as $user) { 
+            ?>
+            <tr>
+                <td>
+               
+                    // echo $user->id;
+                  
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                   
+                </td>
+            </tr>
+       
+        </tbody>
+        </table>
