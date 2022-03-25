@@ -11,6 +11,9 @@ use Phalcon\Mvc\Application;
 use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
+use Phalcon\Session\Manager;
+use Phalcon\Http\Response\Cookies;
+use Phalcon\Session\Adapter\Stream;
 
 $config = new Config([]);
 
@@ -38,6 +41,32 @@ $container->set(
         $view = new View();
         $view->setViewsDir(APP_PATH . '/views/');
         return $view;
+    }
+);
+
+$container->set( 
+    "cookies", function () { 
+       $cookies = new Cookies();  
+       $cookies->useEncryption(false);  
+       return $cookies; 
+    } 
+ ); 
+
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+
+        return $session;
     }
 );
 
