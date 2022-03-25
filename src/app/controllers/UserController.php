@@ -7,7 +7,7 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        if (!$this->session->get('activeUser') || !$this->session->get('activeRole')!=="user") {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole')!=="user") {
             header('location:/');
         } else {
             $this->view->users = Users::find();
@@ -16,7 +16,7 @@ class UserController extends Controller
     }
     public function blogsAction()
     {
-        if (!$this->session->get('activeUser') || !$this->session->get('activeRole')!=="user") {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole')!=="user") {
             header('location:/');
         } else {
 
