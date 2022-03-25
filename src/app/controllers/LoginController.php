@@ -35,10 +35,12 @@ class LoginController extends Controller
                     } elseif ($user->status == "approved" && $user->role == "user") {
                         $this->session->set('msg', "You are a user and with approval");
                         $this->session->set('activeUser', $user->full_name);
+                        $this->session->set('activeRole', $user->role);
                         header('location:/user');
                     } else {
                         $this->session->set('msg', "Hello ADMIN !!");
                         $this->session->set('activeUser', $user->full_name);
+                        $this->session->set('activeRole', $user->role);
                         header('location:/admin');
                     }
 

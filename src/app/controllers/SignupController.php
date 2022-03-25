@@ -27,10 +27,14 @@ class SignupController extends Controller
         {
         $this->view->passwordError = "Passwords don't match"."<br>";
         }
-        // if($emailExists['email'])
-        // {
-        //     $this->view->emailExists = "<br>"."Email already exists"."<br>";
-        // }
+        // foreach($user as $k){
+        //     if($k->email == $postdata['email']){
+        //         $this->view->emailExists = "<br>"."Email already exists"."<br>";
+        //     }
+            
+        //     }
+
+        
 
         else{
         $success = $user->save();

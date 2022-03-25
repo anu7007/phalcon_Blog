@@ -22,12 +22,13 @@ foreach ($blog as $k) {
                     </p>
                     <p>
                         <label for="username">Blog Content</label>
-                        <?php echo $this->tag->textArea(["newcontent", 'placeholder' => 'Enter details here...', "value" => "$k->content", 'style' => 'width:100%; padding:10px', "class" => "text-muted"]); ?>
+                        <?php echo $this->tag->textArea(["newcontent", 'placeholder' => 'Enter details here...', "value" => "$k->content", 'style' => 'width:100%; height:200px; padding:10px', "class" => "text-muted"]); ?>
                     </p>
-                    <div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
-                        <?php echo $saveMsg; ?>
-                    </div>
-
+                    <? if ($saveMsg) { ?>
+                        <div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
+                            <?php echo $saveMsg; ?>
+                        </div>
+                    <?php } ?>
                     <p>
                         <?php echo $this->tag->submitButton(["Save", 'name' => 'saveEditedBlog', 'class' => 'btn btn-outline-primary mb-2 mt-3', 'style' => "width: 20%"]); ?>
                     </p>

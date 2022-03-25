@@ -6,14 +6,14 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         }
         // $this->view->users = blog::find();
     }
     public function dashboardAction()
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             $this->view->users = Users::find();
@@ -46,7 +46,7 @@ class AdminController extends Controller
     }
     public function blogAction()
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             if ($this->request->getPost("readmore")) {
@@ -78,7 +78,7 @@ class AdminController extends Controller
 
     public function addblogAction()
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             $blog = new Blog();
@@ -97,7 +97,7 @@ class AdminController extends Controller
                 );
                 // $user->role = 'user';
                 // $emailExists = $this->view->users = Users::find($postdata['email']);
-                if (empty($postdata['content']) && empty($postdata['title'])) {
+                if (empty($postdata['content']) || empty($postdata['title'])) {
                     $this->view->blogError = '*Both fields are required';
                 } elseif (empty($postdata['title'])) {
                     $this->view->blogError = '*Title is required';
@@ -116,7 +116,7 @@ class AdminController extends Controller
     }
     public function adduserAction()
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             $user = new Users();
@@ -149,7 +149,7 @@ class AdminController extends Controller
     }
     public function readmoreAction($blog_id)
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') || $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             $blog = new Blog();
@@ -159,7 +159,7 @@ class AdminController extends Controller
     }
     public function editblogAction($blog_id)
     {
-        if (!$this->session->get('activeUser')) {
+        if (!$this->session->get('activeUser') && $this->session->get('activeRole') !== "admin") {
             header('location:/');
         } else {
             // echo $blog_id; die;

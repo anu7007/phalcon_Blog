@@ -10,5 +10,6 @@ class IndexController extends Controller
         
             $this->view->users = Users::find();
             // return '<h1>Hello World!</h1>';
+        
         }
     }
