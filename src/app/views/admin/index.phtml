@@ -1,5 +1,9 @@
-This is index page of Admin<br>
-<?php 
-echo $this->tag->linkTo('/admin/dashboard', 'Click here to go to Dashboard<br>');
-PHP_EOL;
-echo $this->tag->linkTo('/admin/blog', 'Click here to go to Blogs');
+<?php
+echo '<h1 class="text-center mt-3">This is index page of Admin</h1>';
+echo '<div class="row text-center mt-5">';
+echo '<div class="col h3">';
+echo $this->tag->linkTo('/admin/dashboard', 'Go to Dashboard');
+echo '</div>';
+echo '<div class="col h3">';
+echo $this->tag->linkTo('/admin/blog', 'Go to Blogs');
+echo '</div>';
