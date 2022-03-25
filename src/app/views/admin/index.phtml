@@ -1,5 +1,6 @@
 <?php
-echo '<h1 class="text-center mt-3">This is index page of Admin</h1>';
+$user=$this->session->get('activeUser');
+echo '<h1 class="text-center mt-3">Welcome Back,  '. $user .'  (ADMIN)</h1>';
 echo '<div class="row text-center mt-5">';
 echo '<div class="col h3">';
 echo $this->tag->linkTo('/admin/dashboard', 'Go to Dashboard');
