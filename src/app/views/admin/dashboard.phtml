@@ -129,7 +129,7 @@
             foreach ($users as $row) {
             ?>
               <tbody class="table table-striped">
-                <tr>
+                <tr class= 'text text-<?php echo $row->status == "pending"? "danger":"success"; ?>'>
                   <td><?php echo $row->user_id; ?></td>
                   <td><?php echo $row->full_name; ?></td>
                   <td><?php echo $row->username; ?></td>
