@@ -18,6 +18,15 @@
 
 
   <style>
+    table,
+    thead,
+    tr,
+    tbody,
+    th,
+    td {
+      text-align: center;
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -49,7 +58,7 @@
     <div class="navbar-nav">
       <div class="nav-item text-nowrap bg-info text-white btn btn-outline-info pt-2 pb-2  px-5 mr-2">
         <?php
-        echo "Hello," . "  " .$this->session->get('activeUser');
+        echo "Hello," . "  " . $this->session->get('activeUser');
         ?>
       </div>
     </div>
@@ -112,9 +121,9 @@
 
         <p class="text text-muted">Users List</p>
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover table-sm">
             <thead class="table table-dark">
-              <tr>
+              <tr class="float-center">
                 <th scope="col">User ID</th>
                 <th scope="col">Full Name</th>
                 <th scope="col">User Name</th>
@@ -127,9 +136,10 @@
             <?php
 
             foreach ($users as $row) {
-            ?>
+              // $color=$row->status == "pending" ? "danger" : $row->status == "approved" ? "success" : $row->role == "admin" ? "muted" : "dark";?>
+            
               <tbody class="table table-striped">
-                <tr class= 'text text-<?php echo $row->status == "pending"? "danger":"success"; ?>'>
+                <tr class='text text-<?php echo $row->status == "pending" ? "danger" : "success" ;?>'>
                   <td><?php echo $row->user_id; ?></td>
                   <td><?php echo $row->full_name; ?></td>
                   <td><?php echo $row->username; ?></td>

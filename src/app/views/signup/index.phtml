@@ -31,11 +31,11 @@
         </p>
         <p>
             <label for="password">Password</label>
-            <?php echo $this->tag->textField("password"); ?>
+            <?php echo $this->tag->passwordField("password"); ?>
         </p>
         <p>
             <label for="confrm_password">Confirm Password</label>
-            <?php echo $this->tag->textField("confirm_password") . '<br>'; ?>
+            <?php echo $this->tag->passwordField("confirm_password") . '<br>'; ?>
         </p>
 
         <p>
@@ -50,6 +50,7 @@
     <div style="text-align:left; width: 40%" class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
         <?php echo $message; ?>
         <?php echo $passwordError; ?>
+        <?php echo $emailExistsError;?>
     </div>
     <?php }
     ?>
