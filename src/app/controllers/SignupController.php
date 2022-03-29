@@ -9,18 +9,33 @@ class SignupController extends Controller
     {
         $escaper = new Escaper();
         $user = new Users();
-        if ($this->request->getPost()) {
-            $this->view->users = Users::find();
-            $postdata=array(
-                'full_name'=>$escaper->escapehtml($this->request->getPost('full_name')),
-                'username'=>$escaper->escapehtml($this->request->getPost('username')),
-                'email'=>$escaper->escapehtml($this->request->getPost('email')),
-                'password'=>$escaper->escapehtml($this->request->getPost('password')),
-                'confirm_password'=>$escaper->escapehtml($this->request->getPost('confirm_password')),
+        $data = $this->request->getPost();
+        $myescaper = new \App\Components\myescaper;
+        $santitizedata = $myescaper->sanitize($data);
+        // $user->assign(
+        //     $santitizedata,
+        //     [
 
-            );
+        //         'full_name',
+        //         'email',
+        //         'username',
+        //         'password',
+        //         'confirm_password'
+        //     ]
+        // );
+        // if ($this->request->getPost()) {
+        //     $this->view->users = Users::find();
+        //     $postdata=array(
+        //         'full_name'=>$escaper->escapehtml($this->request->getPost('full_name')),
+        //         'username'=>$escaper->escapehtml($this->request->getPost('username')),
+        //         'email'=>$escaper->escapehtml($this->request->getPost('email')),
+        //         'password'=>$escaper->escapehtml($this->request->getPost('password')),
+        //         'confirm_password'=>$escaper->escapehtml($this->request->getPost('confirm_password')),
+
+        //     );
+        if ($this->request->getPost()) {
             $user->assign(
-                $postdata,
+                $santitizedata,
                 [
                     'full_name',
                     'username',
@@ -45,7 +60,7 @@ class SignupController extends Controller
             // }
             // $emailExists = emailExists($postdata->email);
             // $emailExists = $this->view->users = Users::find($postdata['email']);
-            if ($postdata['password'] != $postdata['confirm_password']) {
+            if ($santitizedata['password'] != $santitizedata['confirm_password']) {
                 $this->view->passwordError = "Passwords don't match" . "<br>";
             }
             // foreach($user as $k){

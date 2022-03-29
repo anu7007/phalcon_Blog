@@ -30,6 +30,9 @@ $loader->registerDirs(
         APP_PATH . "/models/",
     ]
 );
+$loader->registerNamespaces([
+    'App\Components' => APP_PATH . '/components',
+]);
 
 $loader->register();
 
@@ -44,13 +47,14 @@ $container->set(
     }
 );
 
-$container->set( 
-    "cookies", function () { 
-       $cookies = new Cookies();  
-       $cookies->useEncryption(false);  
-       return $cookies; 
-    } 
- ); 
+$container->set(
+    "cookies",
+    function () {
+        $cookies = new Cookies();
+        $cookies->useEncryption(false);
+        return $cookies;
+    }
+);
 
 $container->set(
     'session',
@@ -88,14 +92,14 @@ $container->set(
     function () {
         return new Mysql(
             [
-    
+
                 'host'     => 'mysql-server',
                 'username' => 'root',
                 'password' => 'secret',
                 'dbname'   => 'blog',
-                ]
-            );
-        }
+            ]
+        );
+    }
 );
 
 $container->set(
